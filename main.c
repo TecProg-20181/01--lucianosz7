@@ -116,15 +116,15 @@ Image crop_image(Image img, int coordinate_x, int coordinate_y, int width, int h
 int main() {
     Image img;
 
-    // read type of image
+    // Read type of image
     char [4];
     scanf("%s", );
 
-    // read width height and color of image
+    // Read width height and color of image
     int max_color;
     scanf("%u %u %d", &img.width, &img.height, &max_color);
 
-    // read all pixels of image
+    // Read all pixels of image
     for (unsigned int i = 0; i < img.height; ++i) {
         for (unsigned int j = 0; j < img.width; ++j) {
             scanf("%hu %hu %hu", &img.pixel[i][j][0],
@@ -142,11 +142,11 @@ int main() {
         scanf("%d", &options);
 
         switch(options) {
-            case 1: { // Escala de Cinza
+            case 1: { // Gray scale
                 img = gray_scale(img);
                 break;
             }
-            case 2: { // Filtro Sepia
+            case 2: { // Filter sepia
                 for (unsigned int x = 0; x < img.height; ++x) {
                     for (unsigned int j = 0; j < img.width; ++j) {
                         unsigned short int pixel[3];
@@ -176,7 +176,7 @@ int main() {
                 blur(img.height, img.pixel, size, img.width);
                 break;
             }
-            case 4: { // Rotacao
+            case 4: { // Rotation
                 int times = 0;
                 scanf("%d", &times);
                 times %= 4;
@@ -185,7 +185,7 @@ int main() {
                 }
                 break;
             }
-            case 5: { // Espelhamento
+            case 5: { // Mirroring
                 int horizontal = 0;
                 scanf("%d", &horizontal);
 
@@ -217,11 +217,11 @@ int main() {
                 }
                 break;
             }
-            case 6: { // Inversao de Cores
+            case 6: { // Color inversion
                 invert_colors(img.pixel, img.width, img.height);
                 break;
             }
-            case 7: { // Cortar Imagem
+            case 7: { // Crop Image
                 int coordenate_x, coordenate_y;
                 scanf("%d %d", &coordenate_x, &coordenate_y);
                 int width, height;
@@ -234,12 +234,12 @@ int main() {
 
     }
 
-    // print type of image
+    // Print type of image
     printf("\n");
-    // print width height and color of image
+    // Print width height and color of image
     printf("%u %u\n255\n", img.width, img.height);
 
-    // print pixels of image
+    // Print pixels of image
     for (unsigned int i = 0; i < img.height; ++i) {
         for (unsigned int j = 0; j < img.width; ++j) {
             printf("%hu %hu %hu ", img.pixel[i][j][0],
