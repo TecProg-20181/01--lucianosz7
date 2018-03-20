@@ -117,8 +117,8 @@ int main() {
     Image img;
 
     // read type of image
-    char type_image[4];
-    scanf("%s", type_image);
+    char [4];
+    scanf("%s", );
 
     // read width height and color of image
     int max_color;
@@ -138,10 +138,10 @@ int main() {
     scanf("%d", &n_options);
 
     for(int i = 0; i < n_options; ++i) {
-        int opcao;
-        scanf("%d", &opcao);
+        int options;
+        scanf("%d", &options);
 
-        switch(opcao) {
+        switch(options) {
             case 1: { // Escala de Cinza
                 img = gray_scale(img);
                 break;
@@ -235,7 +235,7 @@ int main() {
     }
 
     // print type of image
-    printf("type_image\n");
+    printf("\n");
     // print width height and color of image
     printf("%u %u\n255\n", img.width, img.height);
 
