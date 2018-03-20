@@ -16,13 +16,6 @@ typedef struct _image {
     unsigned int height;
 } Image;
 
-
-int max(int a, int b) {
-    if (a > b)
-        return a;
-    return b;
-}
-
 int pixel_equal(Pixel p1, Pixel p2) {
     if (p1.red == p2.red &&
         p1.green == p2.green &&
@@ -54,9 +47,9 @@ void blur(unsigned int height, unsigned short int pixel[512][512][3], int size, 
         for (unsigned int j = 0; j < width; ++j) {
             Pixel average = {0, 0, 0};
 
-            int menor_h = (height - 1 > i + size/2) ? i + size/2 : height - 1;
+            int smaller_height = (height - 1 > i + size/2) ? i + size/2 : height - 1;
             int min_w = (width - 1 > j + size/2) ? j + size/2 : width - 1;
-            for(int x = (0 > i - size/2 ? 0 : i - size/2); x <= menor_h; ++x) {
+            for(int x = (0 > i - size/2 ? 0 : i - size/2); x <= smaller_height; ++x) {
                 for(int y = (0 > j - size/2 ? 0 : j - size/2); y <= min_w; ++y) {
                     average.red += pixel[x][y][0];
                     average.green += pixel[x][y][1];
@@ -64,7 +57,6 @@ void blur(unsigned int height, unsigned short int pixel[512][512][3], int size, 
                 }
             }
 
-            // printf("%u", media.r)
             average.red /= size * size;
             average.green /= size * size;
             average.blue /= size * size;
@@ -125,8 +117,8 @@ int main() {
     Image img;
 
     // read type of image
-    char p3[4];
-    scanf("%s", p3);
+    char type_image[4];
+    scanf("%s", type_image);
 
     // read width height and color of image
     int max_color;
@@ -243,7 +235,7 @@ int main() {
     }
 
     // print type of image
-    printf("P3\n");
+    printf("type_image\n");
     // print width height and color of image
     printf("%u %u\n255\n", img.width, img.height);
 
