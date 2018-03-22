@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+#define pixel_width 512
+#define pixel_heigth 512
+#define pixel_rgb 3
+
+
 typedef struct _pixel {
     unsigned short int red;
     unsigned short int green;
@@ -7,27 +12,16 @@ typedef struct _pixel {
 } Pixel;
 
 typedef struct _image {
-    // [width][height][rgb]
-    // 0 -> r
-    // 1 -> g
-    // 2 -> b
-    unsigned short int pixel[512][512][3];
+    unsigned short int pixel[pixel_width][pixel_heigth][pixel_rgb];
     unsigned int width;
     unsigned int height;
 } Image;
 
-int pixel_equal(Pixel p1, Pixel p2) {
-    if (p1.red == p2.red &&
-        p1.green == p2.green &&
-        p1.blue == p2.blue)
-        return 1;
-    return 0;
-}
 
 
 Image gray_scale(Image img) {
 
-    for (unsigned int i = 0; i < img.height; ++i) {
+    for (unsigned int i =  0; i < img.height; ++i) {
         for (unsigned int j = 0; j < img.width; ++j) {
             int average = img.pixel[i][j][0] +
                         img.pixel[i][j][1] +
@@ -117,8 +111,8 @@ int main() {
     Image img;
 
     // Read type of image
-    char [4];
-    scanf("%s", );
+    char p3[4];
+    scanf("%s", p3);
 
     // Read width height and color of image
     int max_color;
@@ -235,7 +229,7 @@ int main() {
     }
 
     // Print type of image
-    printf("\n");
+    printf("P3\n");
     // Print width height and color of image
     printf("%u %u\n255\n", img.width, img.height);
 
@@ -251,3 +245,5 @@ int main() {
     }
     return 0;
 }
+
+
